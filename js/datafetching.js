@@ -50,8 +50,6 @@ function initialiseData(callback) {
         success: function (data) {
             // Set the global data variable to the data the we recieved
             typedDataSet = data.value;
-
-            console.log(typedDataSet);
         },
     });
 
@@ -100,7 +98,13 @@ function initialiseData(callback) {
 }
 
 function getDataFrom() {
-    console.log(currentCountry, currentPeriod);
+    let country = countries.filter(function (obj) {
+        return obj.Key == currentCountry;
+    })[0];
+
+    let period = periods.filter(function (obj) {
+        return obj.Key == currentPeriod;
+    })[0];
 
     // Get results based on the country and period
     let results = typedDataSet.filter(function (obj) {
@@ -108,4 +112,6 @@ function getDataFrom() {
     });
 
     currentResults = results;
+
+    $('#current').text('Displaying data of ' + country.Title + ' in ' + period.Title);
 }
