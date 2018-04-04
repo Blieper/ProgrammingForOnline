@@ -1,28 +1,28 @@
 
-function buildCountryButtons () {
+function buildAgeButtons () {
     // Create button for each country
-    for (country of countries) {
+    for (age of Age) {
         // Create button
         let button = $('<button></button>');
-        $(button).text(country.Title);
+        $(button).text(age.Title);
 
         // Add relevant info to the button
-        button.country = country;
+        button.age = age;
 
         button.click(function () {
-            currentCountry = button.country.Key;
+            currentCountry = button.age.Key;
 
             getDataFrom();
         });
 
         // Append button
-        $('#countryButtons').append(button);
+        $('#ageButtons').append(button);
     }
 }
 
 function buildPeriodButtons () {
     // Create button for each country
-    for (period of periods) {
+    for (period of Periods) {
         // Create button
         let button = $('<button></button>');
         $(button).text(period.Title);

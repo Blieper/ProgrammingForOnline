@@ -1,100 +1,105 @@
 
 // Initialise data variables
-let countries,
-    tableInfos,
-    untypedDataSet,
-    typedDataSet,
-    dataProperties,
-    categoryGroups,
-    personalCharacteristics
-periods
+let TypedDataSet,
+    TableInfos,
+    DataProperties,
+    CategoryGroups,
+    Gender,
+    Age,
+    Periods,
+    Origin
     = null;
 
-function initialiseData(callback) {
-    // Get request for countries
+function initialiseData(callback) {   
+    // Get request for tableinfos
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/Countries",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/TableInfos",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            countries = data.value;
+            TableInfos = data.value;
         },
-    });
+        async: false
+    });    
 
-    // Get request for tableInfos
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/TableInfos",
+        url: "https://opendata.cbs.nl/ODataApi/odata/71930ned/TypedDataSet",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            tableInfos = data.value[0];
-
-            $('#header').text(tableInfos.Title);
+            TypedDataSet = data.value;
         },
+        async: false
     });
 
-    // Get request for untypedDataSet
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/UntypedDataSet",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/DataProperties",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            untypedDataSet = data.value;
+            DataProperties = data.value;
         },
+        async: false
     });
 
-    // Get request for typedDataSet
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/TypedDataSet",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/CategoryGroups",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            typedDataSet = data.value;
+            CategoryGroups = data.value;
         },
+        async: false
     });
 
-    // Get request for dataProperties
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/DataProperties",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Geslacht",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            dataProperties = data.value[0];
+            Gender = data.value;
         },
+        async: false
     });
 
-    // Get request for categoryGroups
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/CategoryGroups",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Leeftijd",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            categoryGroups = data.value[0];
+            Age = data.value;
         },
+        async: false
     });
 
-    // Get request for personalCharacteristics
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/PersonalCharacteristics",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Herkomstgroeperingen",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            personalCharacteristics = data.value[0];
+            Origin = data.value;
         },
+        async: false
     });
 
-    // Get request for periods
+    // Get request for the typed data 
     $.ajax({
-        url: "http://opendata.cbs.nl/ODataApi/odata/80518ENG/Periods",
+        url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Perioden",
         dataType: 'json',
         success: function (data) {
             // Set the global data variable to the data the we recieved
-            periods = data.value;
-
-            // Call callback function
-            callback();
+            Periods = data.value;
         },
+        async: false
     });
+
+    callback();
 }
 
 function getDataFrom() {

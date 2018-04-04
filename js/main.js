@@ -5,9 +5,9 @@ let currentResults = [];
 
 $( document ).ready(function() {
     initialiseData(function() {
-        buildCountryButtons();
+        buildAgeButtons();
         buildPeriodButtons();
 
-        getDataFrom(currentCountry, currentPeriod);
+        //getDataFrom(currentCountry, currentPeriod);
     });
 });
