@@ -13,15 +13,51 @@
 </head>
 
 <body lang="en">
-    <header id="header">Data</header>
 
-    <div id="ageButtons" class="buttondrawer">
+    <div id="age-buttons" class="buttondrawer">
+        <h4>Age group</h4>
     </div>
 
-    <div id="periodButtons" class="buttondrawer">
+    <div id="period-buttons" class="buttondrawer">
+        <h4>Period</h4>
+    </div>
+
+    <div id="gender-buttons" class="buttondrawer">
+        <h4>Gender</h4>
+    </div>
+
+    <div id="origin-buttons" class="buttondrawer">
+        <h4>Origin</h4>
     </div>
 
     <header id="current"></header>
+
+    <div class="chart-container">
+        <h3>Crime rates</h3>
+
+        <svg width="1000" height="50">
+            <rect y="0" x="0" width="1000" height="50" class="bar-1" id="bar-other" />
+            <rect y="0" x="0" width="250" height="50" class="bar-2" id="bar-theft" />
+            <rect y="0" x="0" width="250" height="50" class="bar-3" id="bar-destruction" />
+            <rect y="0" x="0" width="250" height="50" class="bar-4" id="bar-violent" />
+        </svg>
+        <hr>
+    </div>
+
+
+    <div class="chart-container">
+        <h3>Offense rates</h3>
+
+        <svg width="1000" height="50" class="svgbarchart">
+            <g class="hunperbar">
+                <rect y="0" x="0" width="1000" height="50" class="bar-1" id="bar-other" />
+                <rect y="0" x="0" width="250" height="50" class="bar-2" id="bar-firworks" />
+                <rect y="0" x="0" width="250" height="50" class="bar-3" id="bar-education" />
+                <rect y="0" x="0" width="250" height="50" class="bar-4" id="bar-rowdyness" />
+            </g>
+        </svg>
+        <hr>
+    </div>
 </body>
 
 </html>

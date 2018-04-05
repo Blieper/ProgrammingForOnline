@@ -1,42 +1,120 @@
+function buildButtonDrawer(element, reference, filter, setter) {
+    // Create button for each item in the reference object
+    for (item of reference) {
+        
+        if (filter(item) === false) {
+            continue;
+        }
 
-function buildAgeButtons () {
-    // Create button for each country
-    for (age of Age) {
         // Create button
         let button = $('<button></button>');
-        $(button).text(age.Title);
+        $(button).text(item.Title);
 
-        // Add relevant info to the button
-        button.age = age;
+        // Add relevant data to the button
+        button.data = item;
 
         button.click(function () {
-            currentCountry = button.age.Key;
+            // Call the setter function
+            setter(button.data.Key);
 
-            getDataFrom();
+            // Change the on-screen chart
+            getData();
         });
 
         // Append button
-        $('#ageButtons').append(button);
+        $('#' + element).append(button);
     }
 }
 
-function buildPeriodButtons () {
-    // Create button for each country
-    for (period of Periods) {
-        // Create button
-        let button = $('<button></button>');
-        $(button).text(period.Title);
+function buildChart(object, params) {
+    // Create chart container
+    let container = $('#chart-container');
 
-        // Add relevant info to the button
-        button.period = period;
+    let totalPeople = object.TotaalAantalHaltJongeren_1;
 
-        button.click(function () {
-            currentPeriod = button.period.Key;
+    let totalCrimes = object.TotaalMisdrijvenHalt_2;
+    let violentCrimes = object.GeweldsmisdrijvenHalt_3;
+    let destructionPublicOrder = object.VernielingEnOpenbareOrdeHalt_4;
+    let theftCrimes = object.VermogensmisdrijvenHalt_5;
+    let otherCrimes = object.OverigeMisdrijvenHalt_6;
 
-            getDataFrom();
-        });
+    let totalOffences = object.TotaalOvertredingenHalt_7;
+    let rowdynessOffences = object.BaldadigheidHalt_8;
+    let educationOffences = object.OvertredingLeerplichtwet_9;
+    let firworkOffences = object.VuurwerkovertredingenHalt_10;
+    let otherOffences = object.OverigeOvertredingenHalt_11;
 
-        // Append button
-        $('#periodButtons').append(button);
-    }
+    let width = 1000 * (violentCrimes / totalCrimes);
+
+    $('#bar-violent').animate(
+        {'foo':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );
+
+    width += 1000 * (destructionPublicOrder / totalCrimes);
+    
+    $('#bar-destruction').animate(
+        {'width':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );
+
+    width += 1000 * (theftCrimes / totalCrimes);
+    
+    $('#bar-theft').animate(
+        {'width':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );  
+    
+    width = 1000 * (rowdynessOffences / totalOffences);
+
+    $('#bar-rowdyness').animate(
+        {'foo':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );
+
+    width += 1000 * (educationOffences / totalOffences);
+    
+    $('#bar-education').animate(
+        {'width':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );
+
+    width += 1000 * (firworkOffences / totalOffences);
+    
+    $('#bar-firworks').animate(
+        {'width':width},
+        {
+            step: function(foo){
+                $(this).attr('width', foo);
+            },
+            duration: 500
+        }
+    );   
+
+    $('#chart-parent').append(container);
 }

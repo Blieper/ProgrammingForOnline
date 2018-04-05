@@ -102,21 +102,36 @@ function initialiseData(callback) {
     callback();
 }
 
-function getDataFrom() {
-    let country = countries.filter(function (obj) {
-        return obj.Key == currentCountry;
+function getData() {
+    let age = Age.filter(function (obj) {
+        return obj.Key == currentAge;
     })[0];
 
-    let period = periods.filter(function (obj) {
+    let period = Periods.filter(function (obj) {
         return obj.Key == currentPeriod;
     })[0];
 
+    let gender = Gender.filter(function (obj) {
+        return obj.Key == currentGender;
+    })[0];
+
+    let origin = Origin.filter(function (obj) {
+        return obj.Key == currentOrigin;
+    })[0];
+
     // Get results based on the country and period
-    let results = typedDataSet.filter(function (obj) {
-        return obj.Countries == currentCountry && obj.Periods == currentPeriod;
+    let results = TypedDataSet.filter(function (obj) {
+        return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == currentGender && obj.Herkomstgroeperingen == currentOrigin;
     });
 
     currentResults = results;
 
-    $('#current').text('Displaying data of ' + country.Title + ' in ' + period.Title);
+    console.log(currentResults);
+
+    $('#current').text('Displaying data of ' + age.Title + ' in ' + period.Title + " with gender " + gender.Title + " from " + origin.Title);
+
+    // Build a chart for each result
+    for (i of currentResults) {
+        buildChart(i);
+    }
 }

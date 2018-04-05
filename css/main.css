@@ -1,7 +1,33 @@
+body {
+    background: #222222;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
 .buttondrawer {
-    height: 50px;
+    height: 100px;
     width: 100%;
     overflow: auto;
     scroll-behavior: auto;
     white-space:nowrap;
+}
+
+.bar-1 {
+    fill: mediumaquamarine;
+}
+
+.bar-2 {
+    fill: mediumorchid;
+}
+
+.bar-3 {
+    fill: mediumvioletred;
+}
+
+.bar-4 {
+    fill: mediumturquoise;
+}
+
+.svgbarchart {
+    left: 50%;
 }
