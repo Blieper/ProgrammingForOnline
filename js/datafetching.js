@@ -103,35 +103,14 @@ function initialiseData(callback) {
 }
 
 function getData() {
-    let age = Age.filter(function (obj) {
-        return obj.Key == currentAge;
-    })[0];
-
-    let period = Periods.filter(function (obj) {
-        return obj.Key == currentPeriod;
-    })[0];
-
-    let gender = Gender.filter(function (obj) {
-        return obj.Key == currentGender;
-    })[0];
-
-    let origin = Origin.filter(function (obj) {
-        return obj.Key == currentOrigin;
-    })[0];
-
-    // Get results based on the country and period
-    let results = TypedDataSet.filter(function (obj) {
-        return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == currentGender && obj.Herkomstgroeperingen == currentOrigin;
+    currentMaleResults = TypedDataSet.filter(function (obj) {
+        return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == "3000" && obj.Herkomstgroeperingen == currentOrigin;
     });
 
-    currentResults = results;
+    currentFemaleResults = TypedDataSet.filter(function (obj) {
+        return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == "4000" && obj.Herkomstgroeperingen == currentOrigin;
+    });
 
-    console.log(currentResults);
-
-    $('#current').text('Displaying data of ' + age.Title + ' in ' + period.Title + " with gender " + gender.Title + " from " + origin.Title);
-
-    // Build a chart for each result
-    for (i of currentResults) {
-        buildChart(i);
-    }
+    updateCharts(currentMaleResults,'male');
+    updateCharts(currentFemaleResults,'female');  
 }

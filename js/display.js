@@ -26,95 +26,24 @@ function buildButtonDrawer(element, reference, filter, setter) {
     }
 }
 
-function buildChart(object, params) {
-    // Create chart container
-    let container = $('#chart-container');
+function updateCharts(data, gender) {
+    let totalPeople = data[0].TotaalAantalHaltJongeren_1;
 
-    let totalPeople = object.TotaalAantalHaltJongeren_1;
+    let totalCrimes = data[0].TotaalMisdrijvenHalt_2;
+    let violentCrimes = data[0].GeweldsmisdrijvenHalt_3;
+    let destructionPublicOrder = data[0].VernielingEnOpenbareOrdeHalt_4;
+    let theftCrimes = data[0].VermogensmisdrijvenHalt_5;
+    let otherCrimes = data[0].OverigeMisdrijvenHalt_6;
 
-    let totalCrimes = object.TotaalMisdrijvenHalt_2;
-    let violentCrimes = object.GeweldsmisdrijvenHalt_3;
-    let destructionPublicOrder = object.VernielingEnOpenbareOrdeHalt_4;
-    let theftCrimes = object.VermogensmisdrijvenHalt_5;
-    let otherCrimes = object.OverigeMisdrijvenHalt_6;
+    let totalOffences = data[0].TotaalOvertredingenHalt_7;
+    let rowdynessOffences = data[0].BaldadigheidHalt_8;
+    let educationOffences = data[0].OvertredingLeerplichtwet_9;
+    let fireworkOffences = data[0].VuurwerkovertredingenHalt_10;
+    let otherOffences = data[0].OverigeOvertredingenHalt_11;
 
-    let totalOffences = object.TotaalOvertredingenHalt_7;
-    let rowdynessOffences = object.BaldadigheidHalt_8;
-    let educationOffences = object.OvertredingLeerplichtwet_9;
-    let firworkOffences = object.VuurwerkovertredingenHalt_10;
-    let otherOffences = object.OverigeOvertredingenHalt_11;
+    charts.crime[gender].data.datasets[0].data = [violentCrimes, destructionPublicOrder, theftCrimes, otherCrimes];
+    charts.crime[gender].update();
 
-    let width = 1000 * (violentCrimes / totalCrimes);
-
-    $('#bar-violent').animate(
-        {'foo':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );
-
-    width += 1000 * (destructionPublicOrder / totalCrimes);
-    
-    $('#bar-destruction').animate(
-        {'width':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );
-
-    width += 1000 * (theftCrimes / totalCrimes);
-    
-    $('#bar-theft').animate(
-        {'width':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );  
-    
-    width = 1000 * (rowdynessOffences / totalOffences);
-
-    $('#bar-rowdyness').animate(
-        {'foo':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );
-
-    width += 1000 * (educationOffences / totalOffences);
-    
-    $('#bar-education').animate(
-        {'width':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );
-
-    width += 1000 * (firworkOffences / totalOffences);
-    
-    $('#bar-firworks').animate(
-        {'width':width},
-        {
-            step: function(foo){
-                $(this).attr('width', foo);
-            },
-            duration: 500
-        }
-    );   
-
-    $('#chart-parent').append(container);
+    charts.offence[gender].data.datasets[0].data = [rowdynessOffences, educationOffences, fireworkOffences, otherOffences];
+    charts.offence[gender].update();    
 }

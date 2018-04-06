@@ -1,7 +1,11 @@
 body {
-    background: #222222;
+    color: #fff;
     font-family: sans-serif;
-    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 150%;
+    /* text-align: center; */
+    text-shadow: 0 2px 2px #222222;
+    background: #222;
 }
 
 .buttondrawer {
@@ -12,22 +16,103 @@ body {
     white-space:nowrap;
 }
 
-.bar-1 {
-    fill: mediumaquamarine;
+.chart {
+    background: #222222;
+    color: #fff;
+    border-radius: 5px;
 }
 
-.bar-2 {
-    fill: mediumorchid;
+
+
+.year-change-button {
+    background-color : #555555;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-color: #555555;
+    border: none;
+    width: 150px;
+    height: 50px;
 }
 
-.bar-3 {
-    fill: mediumvioletred;
+#year-change {
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    margin-left: -90px;
+    width: 150px;
 }
 
-.bar-4 {
-    fill: mediumturquoise;
-}
-
-.svgbarchart {
+.year-change-button-drawer{
+    position: relative;
+    background: #555555;
+    border-radius: 5px;
+    width: 50px;
+    margin-left: -25px;
     left: 50%;
 }
+
+#year-button-list {
+    position: relative;
+    background: #555555;
+    border-radius: 5px;
+    width: 50px;
+    margin-left: -35px;
+    padding: 10px;
+    left: 50%;
+    list-style-type: none;
+}
+
+.year-button {
+    background: #333333;
+    color: white;
+    border: none;
+    padding: 2px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.year-button:hover {
+    background: #444444;
+}
+
+.year-button-li{
+    border-radius: 5px;
+}
+  
+.year-change-button:hover {
+    background-color : #666666;
+}
+
+.year-change-button-year {
+    display: inline-block;
+}
+  
+.container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  display: table-cell;
+  /* text-align: center; */
+  /* vertical-align: middle; */
+  width: 50%;
+  padding: 1rem;
+}
+
+.left-half {
+  background: lightskyblue;
+}
+
+.right-half {
+  background: lightcoral;
+}
+
+.introduction {
+    background: #222;
+    width: 100vw;
+}
+  
+  
