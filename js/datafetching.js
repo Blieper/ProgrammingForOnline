@@ -33,7 +33,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the data properties
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/DataProperties",
         dataType: 'json',
@@ -44,7 +44,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the category groups
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/CategoryGroups",
         dataType: 'json',
@@ -55,7 +55,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the gender data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Geslacht",
         dataType: 'json',
@@ -66,7 +66,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the age data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Leeftijd",
         dataType: 'json',
@@ -77,7 +77,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the origin data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Herkomstgroeperingen",
         dataType: 'json',
@@ -88,7 +88,7 @@ function initialiseData(callback) {
         async: false
     });
 
-    // Get request for the typed data 
+    // Get request for the period data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Perioden",
         dataType: 'json',
@@ -99,18 +99,36 @@ function initialiseData(callback) {
         async: false
     });
 
+    // execute the callback function after we recieved all the data
     callback();
 }
 
 function getData() {
+    // Filter in such a way that we only get an object for the age of 17, in the current year, with the male gender, and which is autochtonous
     currentMaleResults = TypedDataSet.filter(function (obj) {
         return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == "3000" && obj.Herkomstgroeperingen == currentOrigin;
     });
 
+    // Filter in such a way that we only get an object for the age of 17, in the current year, with the female gender, and which is autochtonous
     currentFemaleResults = TypedDataSet.filter(function (obj) {
         return obj.Leeftijd == currentAge && obj.Perioden == currentPeriod && obj.Geslacht == "4000" && obj.Herkomstgroeperingen == currentOrigin;
     });
 
+    // Filter in such a way that we only get objects for the age of 17, with the male gender, and which are autochtonous
+    periodMaleResults = TypedDataSet.filter(function (obj) {
+        return obj.Leeftijd == currentAge && obj.Geslacht == "3000" && obj.Herkomstgroeperingen == currentOrigin;
+    });
+
+    // Filter in such a way that we only get objects for the age of 17, with the female gender, and which are autochtonous
+    periodFemaleResults = TypedDataSet.filter(function (obj) {
+        return obj.Leeftijd == currentAge && obj.Geslacht == "4000" && obj.Herkomstgroeperingen == currentOrigin;
+    });
+
+    // update male bar charts
     updateCharts(currentMaleResults,'male');
+    // update female bar charts
     updateCharts(currentFemaleResults,'female');  
+
+    // update line graphs
+    updateLineGraphs();
 }

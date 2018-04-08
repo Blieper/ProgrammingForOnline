@@ -1,32 +1,6 @@
-function buildButtonDrawer(element, reference, filter, setter) {
-    // Create button for each item in the reference object
-    for (item of reference) {
-        
-        if (filter(item) === false) {
-            continue;
-        }
-
-        // Create button
-        let button = $('<button></button>');
-        $(button).text(item.Title);
-
-        // Add relevant data to the button
-        button.data = item;
-
-        button.click(function () {
-            // Call the setter function
-            setter(button.data.Key);
-
-            // Change the on-screen chart
-            getData();
-        });
-
-        // Append button
-        $('#' + element).append(button);
-    }
-}
-
 function updateCharts(data, gender) {
+
+    // Get numbers from data object
     let totalPeople = data[0].TotaalAantalHaltJongeren_1;
 
     let totalCrimes = data[0].TotaalMisdrijvenHalt_2;
@@ -41,9 +15,42 @@ function updateCharts(data, gender) {
     let fireworkOffences = data[0].VuurwerkovertredingenHalt_10;
     let otherOffences = data[0].OverigeOvertredingenHalt_11;
 
+    // Set the data of the given chart
     charts.crime[gender].data.datasets[0].data = [violentCrimes, destructionPublicOrder, theftCrimes, otherCrimes];
+    // Update the given chart
     charts.crime[gender].update();
 
+    // Set the data of the given chart
     charts.offence[gender].data.datasets[0].data = [rowdynessOffences, educationOffences, fireworkOffences, otherOffences];
-    charts.offence[gender].update();    
+    // Update the given chart
+    charts.offence[gender].update();
+}
+
+function updateLineGraphs () {
+
+    // initialise empty array
+    let maleArray = [];
+
+    for (i of periodMaleResults){
+        // get total numbers of delinquencies for males for a period
+        maleArray.push(i.TotaalMisdrijvenHalt_2 + i.TotaalOvertredingenHalt_7);
+    }
+
+    // Set the data of the given chart
+    charts.lineGraph['male'].data.datasets[0].data = maleArray;
+    // Update the given chart
+    charts.lineGraph['male'].update();
+
+    // initialise empty array
+    let femaleArray = [];
+
+    for (i of periodFemaleResults){
+        // get total numbers of delinquencies for females for a period
+        femaleArray.push(i.TotaalMisdrijvenHalt_2 + i.TotaalOvertredingenHalt_7);
+    }
+
+    // Set the data of the given chart
+    charts.lineGraph['female'].data.datasets[0].data = femaleArray;
+    // Update the given chart
+    charts.lineGraph['female'].update();
 }

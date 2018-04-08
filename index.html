@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Delinquency NL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.3">
 
     <script src="js/jquery.js"></script>
+    <script src="js/charts.js"></script>
     <script src="js/datafetching.js"></script>
     <script src="js/display.js"></script>
     <script src="js/main.js"></script>
@@ -14,60 +17,121 @@
 </head>
 
 <body lang="en">
-    <div class="introduction">
-        <article>
-            <h1>Crime rates in the Netherlands: males vs females</h1>
-            <p>Description.</p>
-        </article>
-    </div>
-
-    <section class="container" id="crimes">
-        <div class="left-half">
+    <section class="container" id="section01">
+        <div class="introduction lr">
             <article>
-                <h1>Males</h1>
-                <hr>
-                <p>Description.</p>
-
-                <canvas class="chart" id="male-crime-chart" width="400" height="100"></canvas>
-            </article>
-        </div>
-        <div class="right-half">
-            <article>
-                <h1>Females</h1>
-                <hr>
-                <p>Description.</p>
-
-                <canvas class="chart" id="female-crime-chart" width="400" height="100"></canvas>
+                <div id="introtext">
+                    <h1>Delinquency in the Netherlands: males vs females</h1>
+                    <br>
+                    <p>This webpage visualises the difference in delinquency between males and females.
+                        <br>
+                        <br>All subjects are 17 years old and autochtonous.</p>
+                </div>
             </article>
         </div>
     </section>
 
-    <section class="container" id="crimes">
-        <div class="left-half">
-            <article>
-                <h1>Males</h1>
-                <hr>
-                <p>Description.</p>
-
-                <canvas class="chart" id="male-offence-chart" width="400" height="100"></canvas>
-            </article>
+    <section class="container" id="section02">
+        <div class="description">
+            <h1>Crime rates</h1>
+            <br>
+            <p>Here you can see the crime rates for males and females.</p>
         </div>
-        <div class="right-half">
-            <article>
-                <h1>Females</h1>
-                <hr>
-                <p>Description.</p>
 
-                <canvas class="chart" id="female-offence-chart" width="400" height="100"></canvas>
-            </article>
+        <div class="seperate">
+            <div class="left-half lr gendersection">
+                <article>
+                    <h1>Males</h1>
+
+                    <div class="chartdiv">
+                        <canvas class="chart" id="male-crime-chart" width="100%" height="450"></canvas>
+                    </div>
+                </article>
+            </div>
+            <div class="right-half lr gendersection">
+                <article>
+                    <h1>Females</h1>
+
+                    <div class="chartdiv">
+                        <canvas class="chart" id="female-crime-chart" width="100%" height="450"></canvas>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
+    <section class="container" id="section03">
+        <div class="description">
+            <h1>Offense rates</h1>
+            <br>
+            <p>Here you can see the offense rates for males and females.</p>
+        </div>
 
+        <div class="seperate">
+            <div class="left-half lr gendersection">
+                <article>
+                    <h1>Males</h1>
 
+                    <div class="chartdiv">
+                        <canvas class="chart" id="male-offence-chart" width="100%" height="450"></canvas>
+                    </div>
+                </article>
+            </div>
+            <div class="right-half lr gendersection">
+                <article>
+                    <h1>Females</h1>
+
+                    <div class="chartdiv">
+                        <canvas class="chart" id="female-offence-chart" width="100%" height="450"></canvas>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="section04">
+        <div class="description">
+            <h1>Delinquency over time</h1>
+            <br>
+            <p>Here you can see the change in delinquency rates over time. From 2005 until 2016.</p>
+        </div>
+
+        <div class="seperate">
+            <div class="upper stacked gendersection">
+                <article>
+                    <h1>Males</h1>
+
+                    <div class="chartdiv">
+                        <canvas class="chart" id="line-graph-male" width="120" height="200"></canvas>
+                    </div>
+                </article>
+            </div>
+            <div class="lower stacked gendersection">
+                <article>
+                    <h1>Females</h1>
+
+                    <div class="chartdiv">
+                        <canvas class="chart" id="line-graph-female" width="120" height="200"></canvas>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="section05">
+        <div class="introduction lr">
+            <article>
+                <div id="introtext">
+                    <h1>Source</h1>
+                    <br>
+                    <a href="https://opendata.cbs.nl">opendata.cbs.nl</a>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <div id="year-change">
-        <ul id="year-button-list">
+        <ul id="year-button-list" class="shadow">
             <li class="year-button-li">
                 <button class="year-button" id="button-2005">2005</button>
             </li>
@@ -106,8 +170,13 @@
             </li>
         </ul>
 
-        <button class="year-change-button">Change year</button>
+        <button class="year-change-button shadow">Change year</button>
     </div>
+
+    <button class="scrollbutton shadow">
+        <span></span>Scroll down</button>
+    <button class="scrollbutton-up shadow">
+        <span></span>Scroll up</button>
 
 </body>
 

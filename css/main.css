@@ -6,6 +6,11 @@ body {
     /* text-align: center; */
     text-shadow: 0 2px 2px #222222;
     background: #222;
+    overflow-y: hidden;
+
+    margin: 0; 
+    padding: 0; 
+    border: 0;
 }
 
 .buttondrawer {
@@ -22,7 +27,9 @@ body {
     border-radius: 5px;
 }
 
-
+a {
+    color: lightskyblue;
+}
 
 .year-change-button {
     background-color : #555555;
@@ -35,10 +42,49 @@ body {
     height: 50px;
 }
 
+.scrollbutton {
+    background-color : #555555;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-color: #555555;
+    border: none;
+    width: 150px;
+    height: 50px;
+    position: fixed;
+
+    left: 50%;
+    bottom: 16px;
+    margin-left: -75px;
+}
+
+.scrollbutton:hover {
+    background-color : #666666;
+}
+
+.scrollbutton-up {
+    background-color : #555555;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-color: #555555;
+    border: none;
+    width: 150px;
+    height: 50px;
+    position: fixed;
+
+    right: 1%;
+    bottom: 16px;
+}
+
+.scrollbutton-up:hover {
+    background-color : #666666;
+}
+
 #year-change {
     position: fixed;
-    bottom: 0%;
-    left: 50%;
+    bottom: 2%;
+    left: 6%;
     margin-left: -90px;
     width: 150px;
 }
@@ -89,30 +135,85 @@ body {
 }
   
 .container {
-  display: table;
-  height: 100%;
-  width: 100%;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
 }
 
-div {
-  display: table-cell;
-  /* text-align: center; */
-  /* vertical-align: middle; */
-  width: 50%;
-  padding: 1rem;
+.seperate{
+    display: table;
+    width: 100vw;
+}
+
+.chartdiv {
+    width: 100%;
+    height: 100%;
+}
+
+.lr {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 50%;
+    height: 50vh;
+
+    /* padding: 1rem; */
+}
+
+.description{
+    width: 100vw;
+    height: 25vh;   
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1rem;
+}
+
+.gendersection {
+    border-radius: 10px;
+    border: 5px solid #222;
+    padding: 1rem;
+    height: 50vh;
 }
 
 .left-half {
-  background: lightskyblue;
+    background: lightskyblue;
 }
 
 .right-half {
-  background: lightcoral;
+    background: lightcoral;
+}
+
+.stacked {
+    /* width: 100%; */
+    height: 28vh;
+
+    /* padding: 1rem; */
+}
+
+.upper {
+    background: lightskyblue;
+}
+
+.lower {
+    background: lightcoral;
 }
 
 .introduction {
     background: #222;
     width: 100vw;
+
+    text-align: center;
+    vertical-align: middle;
 }
-  
-  
+
+.shadow {
+    box-shadow: 2px 2px 4px #000000;
+}
+
+#introtext {
+    top: 50%;
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background: #111111;
+}
