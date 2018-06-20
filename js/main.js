@@ -25,18 +25,18 @@ $(document).ready(function () {
 
         // function to toggle the year widget
         let yearChangeButton = $('.year-change-button');
-        yearChangeButton.isToggled = false;
-        $('#year-button-list').hide();
+        //yearChangeButton.isToggled = false;
+        //$('#year-button-list').hide();
 
-        yearChangeButton.click(function () {
-            yearChangeButton.isToggled = !yearChangeButton.isToggled;
+        // yearChangeButton.click(function () {
+        //     yearChangeButton.isToggled = !yearChangeButton.isToggled;
 
-            if (yearChangeButton.isToggled) {
-                $('#year-button-list').fadeIn(100);
-            } else {
-                $('#year-button-list').fadeOut(100);
-            }
-        });
+        //     if (yearChangeButton.isToggled) {
+        //         $('#year-button-list').fadeIn(100);
+        //     } else {
+        //         $('#year-button-list').fadeOut(100);
+        //     }
+        // });
 
         // setting click function for all year buttons
         $('.year-button').each(function (i, obj) {
