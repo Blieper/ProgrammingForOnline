@@ -1,6 +1,6 @@
 
 // Initialise data variables
-let TypedDataSet,
+var TypedDataSet,
     TableInfos,
     DataProperties,
     CategoryGroups,
@@ -14,7 +14,12 @@ function initialiseData(callback) {
     // Get request for tableinfos
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/TableInfos",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             TableInfos = data.value;
@@ -25,10 +30,16 @@ function initialiseData(callback) {
     // Get request for the typed data 
     $.ajax({
         url: "https://opendata.cbs.nl/ODataApi/odata/71930ned/TypedDataSet",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             TypedDataSet = data.value;
+            console.log(TypedDataSet);
         },
         async: false
     });
@@ -36,7 +47,12 @@ function initialiseData(callback) {
     // Get request for the data properties
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/DataProperties",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             DataProperties = data.value;
@@ -47,7 +63,12 @@ function initialiseData(callback) {
     // Get request for the category groups
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/CategoryGroups",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             CategoryGroups = data.value;
@@ -58,7 +79,12 @@ function initialiseData(callback) {
     // Get request for the gender data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Geslacht",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             Gender = data.value;
@@ -69,7 +95,12 @@ function initialiseData(callback) {
     // Get request for the age data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Leeftijd",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             Age = data.value;
@@ -80,7 +111,12 @@ function initialiseData(callback) {
     // Get request for the origin data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Herkomstgroeperingen",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             Origin = data.value;
@@ -91,7 +127,12 @@ function initialiseData(callback) {
     // Get request for the period data 
     $.ajax({
         url: "http://opendata.cbs.nl/ODataApi/odata/71930ned/Perioden",
+        type: 'GET',
         dataType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        crossDomain: true,
         success: function (data) {
             // Set the global data variable to the data the we recieved
             Periods = data.value;
